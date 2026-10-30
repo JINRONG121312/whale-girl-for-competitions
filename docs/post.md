@@ -1,5 +1,10 @@
 # 我在网页左下角，养了一只鲸鱼娘
 
+> 项目地址：**https://github.com/JINRONG121312/whale-in-my-web**
+> 一只 11.5 KB 的看板娘，纯 SVG + CSS，不依赖任何框架。可以先看 [演示](https://github.com/JINRONG121312/whale-in-my-web/blob/main/demo/index.html)，双击就能跑。
+
+---
+
 ## 一
 
 事情是从一块 99 块钱一年的服务器开始的。
@@ -104,6 +109,8 @@ document.dispatchEvent(new CustomEvent('wg:danmaku', {
 
 **那一刻它才真正活了。** 不是因为它多了几个动画，而是因为它开始"认识人"了。
 
+顺便说，这层耦合是故意做松的：挂件只监听事件，不知道数据从哪来。所以你可以接自己的接口、接 WebSocket、甚至接一份静态 JSON——**换数据源不用改一行挂件代码**。这一条也是我在仓库里唯一强调"架构"的地方。
+
 ---
 
 ## 六
@@ -157,6 +164,32 @@ document.dispatchEvent(new CustomEvent('wg:danmaku', {
 它做的事情是：写代码、摸鱼、被查岗、扣钱、涨上限、换班、生气、消气、打瞌睡、认名字、回弹幕、被拖走、记住自己在哪里。
 
 **11.5KB，换一个人愿意在页面上多待十秒。** 我觉得这笔交易很划算。
+
+---
+
+## 八、想自己养一只？
+
+代码全部开源了（**非商业许可**，个人博客随便用）：
+
+**仓库**：https://github.com/JINRONG121312/whale-in-my-web
+
+里面除了能跑的代码，还有两份额外的东西：
+
+- **`docs/report.md`** —— 一份学术体例的技术报告。约束推导、状态机形式化、体积与帧预算的实测数据、以及"效度威胁"（诚实写明哪些结论没有实验支撑）。
+- **`demo/index.html`** —— 双击就能跑的演示页，不用起服务器、不用装依赖。
+
+使用只需要两个文件：
+
+```html
+<link rel="stylesheet" href="src/whale-girl.css">
+<script defer src="src/whale-girl.js"></script>
+```
+
+Hexo、Butterfly、Vue、纯 HTML 都行，代码里没有一处绑定框架。
+
+如果它对你有用，**点个 star** 是我能收到的最实在的反馈；如果它在你那儿跑不起来，开个 issue，我大概率当天就回。
+
+> 商业使用需要授权（年费 + 分成，也支持一次性买断），细则写在仓库的 `COMMERCIAL.md` 里。个人博客、学习、公益都不用管这条。
 
 ---
 
