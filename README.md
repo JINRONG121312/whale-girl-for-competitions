@@ -99,6 +99,9 @@ src/danmaku.js       可选：配套弹幕组件
 src/danmaku.css
 assets/whale.svg     鲸鱼娘立绘（也是侧边栏头像）
 assets/lobster.svg   龙虾娘老板
+assets/avatar.png    512px 头像（带水印）
+assets/social-preview.png  1280x640 社交预览图（带水印）
+assets/NOTICE.md     原创声明、水印规格与资产指纹（SHA-256）
 demo/index.html      双击就能看的演示页
 docs/report.md       技术报告（学术体例：摘要/相关工作/形式化/评估）
 docs/post.md         项目复盘：可直接当博客文章发
@@ -106,6 +109,14 @@ CHANGELOG.md         版本记录
 LICENSE              PolyForm Noncommercial 1.0.0（非商业）
 COMMERCIAL.md        商业授权说明（分成方式、报价区间、申请流程）
 ```
+
+## 原创与资产
+
+角色立绘、代码与配图均为作者原创，首次公开于 2026-10-31。
+
+所有图片资产带有可见水印，并在 PNG 元数据中写入 `Author` / `Copyright` / `Comment`；文件级 SHA-256 记录在 [assets/NOTICE.md](assets/NOTICE.md)，可用于比对副本。
+
+转载本项目截图时，保留水印或注明仓库地址即可。
 
 ## 许可
 
