@@ -95,7 +95,25 @@ assets/lobster.svg   龙虾娘老板
 demo/index.html      双击就能看的演示页
 docs/report.md       技术报告（学术体例：摘要/相关工作/形式化/评估）
 docs/post.md         项目复盘：可直接当博客文章发
+CHANGELOG.md         版本记录
+LICENSE              PolyForm Noncommercial 1.0.0（非商业）
+COMMERCIAL.md        商业授权说明（分成方式、报价区间、申请流程）
 ```
+
+## 许可
+
+本项目采用 **[PolyForm Noncommercial License 1.0.0](LICENSE)**。
+
+| 用途 | 是否需要授权 | 费用 |
+|---|---|---|
+| 个人博客、作品集、学习研究、公益与教育机构 | 不需要 | 免费 |
+| 公司官网、付费产品、SaaS、外包交付、广告变现站点 | **需要** | 年费 + 营收分成 |
+
+商业授权按「年费 + 营收分成（参考 3%–10%）」协商，也可以一次性买断。细则见 **[COMMERCIAL.md](COMMERCIAL.md)**，申请请开一个以 `[Commercial]` 开头的 Issue。
+
+> ⚠️ 严格来说，这不是 OSI 定义的开源许可（"开源"通常允许商业使用），而是**源码公开的非商业许可**（source-available, noncommercial）。请按这个理解使用。
+
+思路和设计可以随便借鉴——**思想不受版权保护，欢迎你做一个更好的**。
 
 ## 说明
 
