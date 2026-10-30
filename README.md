@@ -1,5 +1,12 @@
 # whale-in-my-web
 
+[![Stars](https://img.shields.io/github/stars/JINRONG121312/whale-in-my-web?style=flat-square&color=4b97dd)](https://github.com/JINRONG121312/whale-in-my-web/stargazers)
+[![License](https://img.shields.io/badge/license-PolyForm%20Noncommercial%201.0.0-ffb26b?style=flat-square)](LICENSE)
+[![Size](https://img.shields.io/badge/gzip-11.5%20KB-35c07a?style=flat-square)](#%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AF-115-kb)
+[![Dependencies](https://img.shields.io/badge/dependencies-0-35c07a?style=flat-square)](#%E5%BF%AB%E9%80%9F%E4%BD%BF%E7%94%A8)
+[![Framework](https://img.shields.io/badge/framework-any-8e8e93?style=flat-square)](#%E5%BF%AB%E9%80%9F%E4%BD%BF%E7%94%A8)
+[![Demo](https://img.shields.io/badge/demo-double--click%20to%20run-4b97dd?style=flat-square)](demo/index.html)
+
 > 一只住在网页左下角的鲸鱼娘：会游、会摸鱼、会被老板查岗、会记得你的名字。
 
 纯前端、零依赖、零图片请求的看板娘挂件。原本是给我自己那个 2 核 2G、3M 带宽的小博客写的，但代码不绑定任何框架——任何静态页面引两个文件就能用。
@@ -114,6 +121,22 @@ COMMERCIAL.md        商业授权说明（分成方式、报价区间、申请�
 > ⚠️ 严格来说，这不是 OSI 定义的开源许可（"开源"通常允许商业使用），而是**源码公开的非商业许可**（source-available, noncommercial）。请按这个理解使用。
 
 思路和设计可以随便借鉴——**思想不受版权保护，欢迎你做一个更好的**。
+
+## 为什么是 11.5 KB
+
+因为站点跑在 **2 核 2G、3 Mbps** 的云服务器上，公网峰值 375 KB/s——每多 100 KB，访客就多等 0.27 秒。
+
+所以这里没有 Live2D（模型起步 1–3 MB）、没有位图、没有框架运行时。全部内容是：
+
+| 文件 | gzip |
+|---|---|
+| `whale-girl.js`（状态机、渲染、交互、文案） | 7,271 B |
+| `whale-girl.css`（主题、动效、响应式） | 2,354 B |
+| `whale.svg`（角色立绘） | 1,058 B |
+| `lobster.svg`（第二角色） | 819 B |
+| **合计** | **11,502 B** |
+
+推导过程、帧预算与效度威胁写在 [docs/report.md](docs/report.md) 里。
 
 ## 说明
 
