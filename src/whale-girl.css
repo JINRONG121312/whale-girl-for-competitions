@@ -1,0 +1,506 @@
+/* 鲸鱼娘 · 站点挂件 */
+.wg {
+  position: fixed;
+  left: 22px;
+  bottom: 18px;
+  z-index: 900;
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  max-width: 320px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  color: #28415e;
+  font: 12px/1.45 system-ui, -apple-system, "Segoe UI", "Microsoft YaHei", sans-serif;
+  transition: opacity 0.3s ease, transform 2.4s cubic-bezier(0.34, 0.08, 0.2, 1);
+}
+
+html[data-theme="dark"] .wg {
+  color: #dbe7f5;
+}
+
+.wg[hidden] {
+  display: none;
+}
+
+.wg-pet {
+  flex: none;
+  width: 96px;
+  height: 96px;
+  padding: 0;
+  border: 0;
+  border-radius: 14px;
+  background: transparent;
+  cursor: pointer;
+}
+
+.wg-pet svg {
+  display: block;
+  width: 96px;
+  height: 96px;
+  overflow: visible;
+  animation: wg-bob 3.4s ease-in-out infinite;
+}
+
+.wg-body {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 16px;
+  padding: 7px 11px;
+  border-radius: 15px;
+  background-color: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 6px 20px rgba(31, 66, 110, 0.1);
+}
+
+html[data-theme="dark"] .wg-body {
+  background-color: rgba(29, 38, 52, 0.94);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.38);
+}
+
+.wg-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.wg-dot {
+  flex: none;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #35c07a;
+}
+
+.wg[data-phase="slack"] .wg-dot {
+  background: #f0a500;
+}
+
+.wg-state {
+  font-weight: 600;
+}
+
+.wg-shift {
+  margin-left: auto;
+  opacity: 0.6;
+  font-size: 10px;
+}
+
+.wg-bubble {
+  max-width: 208px;
+  padding: 3px 8px;
+  border-radius: 10px;
+  background: #f2f7fd;
+  border: 1px solid #e3ecf6;
+  font-size: 11px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+html[data-theme="dark"] .wg-bubble {
+  background: #24303f;
+  border-color: #2d3c50;
+}
+
+.wg-foot {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+}
+
+.wg-coins {
+  color: #c99513;
+  white-space: nowrap;
+}
+
+.wg-coins b {
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+
+.wg-tip {
+  padding: 1px 9px;
+  border: 1px solid #dbe6f2;
+  border-radius: 999px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 11px;
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.wg-tip:hover {
+  border-color: #4b97dd;
+  color: #2f7fd0;
+}
+
+.wg-close {
+  position: absolute;
+  top: -4px;
+  right: -2px;
+  opacity: 0;
+  width: 18px;
+  height: 18px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: inherit;
+  font-size: 13px;
+  line-height: 1;
+  opacity: 0.35;
+  cursor: pointer;
+}
+
+.wg-close:hover {
+  opacity: 0.8;
+}
+
+/* 尾巴 / 眼睛 / 小鱼 / 睡意 / 爱心 */
+.wg-tail {
+  transform-origin: 22px 60px;
+  animation: wg-wag 2.6s ease-in-out infinite;
+}
+
+.wg-eyes {
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform 0.2s ease;
+}
+
+.wg[data-mood="happy"] .wg-eyes {
+  transform: scaleY(0.3);
+}
+
+.wg[data-mood="sly"] .wg-eyes {
+  transform: scaleY(0.35);
+}
+
+.wg-fish {
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.wg[data-phase="slack"] .wg-fish {
+  opacity: 1;
+  animation: wg-float 2.2s ease-in-out infinite;
+}
+
+.wg-zzz {
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.wg[data-phase="slack"] .wg-zzz {
+  opacity: 1;
+  animation: wg-zzz 2.4s ease-in-out infinite;
+}
+
+.wg-heart {
+  opacity: 0;
+}
+
+.wg[data-hearts="on"] .wg-heart {
+  animation: wg-heart 1s ease-out 3;
+}
+
+@keyframes wg-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+}
+
+@keyframes wg-wag {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(-8deg); }
+}
+
+@keyframes wg-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+@keyframes wg-zzz {
+  0% { opacity: 0; transform: translateY(2px); }
+  40% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(-5px); }
+}
+
+@keyframes wg-heart {
+  0% { opacity: 0; transform: scale(0.6) translateY(4px); }
+  30% { opacity: 1; }
+  100% { opacity: 0; transform: scale(1.1) translateY(-12px); }
+}
+
+@media (max-width: 767px) {
+  .wg {
+    left: 12px;
+    bottom: 12px;
+    padding: 6px;
+  }
+
+  .wg-body,
+  .wg-close {
+    display: none;
+  }
+
+  .wg[data-open="on"] .wg-body {
+    display: flex;
+  }
+
+  .wg[data-open="on"] .wg-close {
+    display: block;
+  }
+
+  .wg[data-open="on"] {
+    max-width: calc(100vw - 24px);
+  }
+
+  .wg-pet,
+  .wg-pet svg {
+    width: 52px;
+    height: 52px;
+  }
+}
+
+/* 注：这里原本会响应系统的"减少动态效果"并关掉所有动画，
+   导致部分 Windows 用户完全看不到动作，已移除。 */
+
+/* ---- ??????? ---- */
+.wg-boss-art {
+  position: absolute;
+  right: 10px;
+  top: -42px;
+  width: 42px;
+  height: 42px;
+  opacity: 0;
+  transform: scale(0.6) translateY(4px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  pointer-events: none;
+  filter: drop-shadow(0 3px 6px rgba(120, 40, 20, 0.18));
+}
+
+.wg[data-boss="on"] .wg-boss-art {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  animation: wg-boss-shake 1.2s ease-in-out infinite;
+}
+
+.wg-chip {
+  display: none;
+  align-items: center;
+  padding: 0 7px;
+  border-radius: 999px;
+  background: #e0553a;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.wg[data-boss="on"] .wg-shift { display: none; }
+
+.wg[data-boss="on"] .wg-chip {
+  display: inline-flex;
+  animation: wg-pulse 1s ease-in-out infinite;
+}
+
+@keyframes wg-boss-shake {
+  0%, 100% { transform: scale(1) rotate(-3deg); }
+  50% { transform: scale(1.05) rotate(3deg); }
+}
+
+@keyframes wg-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.55; }
+}
+
+@media (max-width: 767px) {
+  .wg-boss-art { display: none; }
+}
+
+/* ---- ????????????? ---- */
+.wg[data-shift="on"] .wg-pet {
+  animation: wg-shift-pop 0.7s ease;
+}
+
+@keyframes wg-shift-pop {
+  0% { transform: scale(1); }
+  35% { transform: scale(1.045); }
+  100% { transform: scale(1); }
+}
+
+/* ?????????????????????? */
+@media (max-width: 767px) {
+  .wg-tip { display: none; }
+}
+
+/* ---- ???? / ?? / ?? / ?? / ?? ---- */
+.wg-coins i {
+  font-style: normal;
+  opacity: 0.55;
+}
+
+.wg-msg {
+  padding: 1px 9px;
+  border: 1px solid #dbe6f2;
+  border-radius: 999px;
+  color: inherit;
+  font-size: 11px;
+  text-decoration: none;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.wg-msg:hover {
+  border-color: #4b97dd;
+  color: #2f7fd0;
+}
+
+.wg-fx {
+  position: absolute;
+  left: 48px;
+  top: 14px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #c99513;
+  pointer-events: none;
+  animation: wg-fx-up 1.05s ease-out forwards;
+}
+
+.wg-fx-bad {
+  color: #e0553a;
+}
+
+@keyframes wg-fx-up {
+  0% { opacity: 0; transform: translateY(6px) scale(0.9); }
+  25% { opacity: 1; transform: translateY(0) scale(1); }
+  100% { opacity: 0; transform: translateY(-20px) scale(1); }
+}
+
+.wg[data-hit="on"] .wg-pet {
+  animation: wg-hit 0.55s ease;
+}
+
+@keyframes wg-hit {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-4px); }
+  40% { transform: translateX(4px); }
+  60% { transform: translateX(-3px); }
+  80% { transform: translateX(2px); }
+}
+
+.wg[data-blink="on"] .wg-eyes {
+  transform: scaleY(0.08);
+}
+
+/* ---- ????? ---- */
+.wg[data-sleep="on"] .wg-eyes {
+  transform: scaleY(0.08);
+}
+
+.wg[data-sleep="on"] .wg-zzz {
+  opacity: 1;
+  animation: wg-zzz 3.4s ease-in-out infinite;
+}
+
+.wg[data-sleep="on"] .wg-pet svg {
+  animation-duration: 6.5s;
+}
+
+.wg[data-sleep="on"] .wg-tail {
+  animation-duration: 5.5s;
+}
+
+.wg[data-sleep="on"] .wg-dot {
+  background: #8496ab;
+}
+
+.wg[data-sleep="on"] .wg-bubble {
+  opacity: 0.85;
+  font-style: italic;
+}
+
+/* ---- 被点一下：甩尾游开 ---- */
+.wg[data-dodge="on"] {
+  transition: transform 0.8s cubic-bezier(0.22, 0.85, 0.3, 1), opacity 0.3s ease;
+}
+
+.wg[data-dodge="on"] .wg-tail {
+  animation: wg-wag 0.5s ease-in-out infinite;
+}
+
+.wg[data-dodge="on"] .wg-pet svg {
+  animation-duration: 1.1s;
+}
+
+/* ---- 被连点戳急了 ---- */
+.wg[data-angry="on"] .wg-body {
+  box-shadow: 0 8px 24px rgba(224, 85, 58, 0.24);
+}
+
+.wg[data-angry="on"] .wg-dot {
+  background: #e0553a;
+}
+
+.wg[data-angry="on"] .wg-tail {
+  animation: wg-wag 0.35s ease-in-out infinite;
+}
+
+.wg[data-angry="on"] .wg-eyes {
+  transform: scaleY(0.5) rotate(-4deg);
+}
+
+.wg[data-angry="on"] .wg-bubble {
+  border-color: #ffc9b8;
+  background: #fff3ef;
+  color: #b8432a;
+}
+
+html[data-theme="dark"] .wg[data-angry="on"] .wg-bubble {
+  background: #3a2420;
+  border-color: #5a3730;
+  color: #ffb9a4;
+}
+
+.wg:hover .wg-close {
+  opacity: 0.55;
+}
+
+.wg-close:hover {
+  opacity: 1 !important;
+}
+
+/* 气泡可拖动换位置 */
+.wg-body {
+  cursor: grab;
+  touch-action: none;
+}
+
+.wg-body:active {
+  cursor: grabbing;
+}
+
+.wg-body:hover {
+  box-shadow: 0 8px 24px rgba(31, 66, 110, 0.15);
+}
+
+/* 整块都能拖：鲸鱼本体 + 气泡 */
+.wg {
+  user-select: none;
+  touch-action: none;
+}
+
+.wg-pet {
+  cursor: grab;
+}
+
+.wg-pet:active {
+  cursor: grabbing;
+}

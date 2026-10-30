@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>whale-in-my-web · 演示</title>
+<link rel="stylesheet" href="../src/whale-girl.css">
+<style>
+  html, body { margin: 0; }
+  body {
+    min-height: 100vh;
+    background: linear-gradient(180deg, #8fc3dd 0%, #d8ecfb 55%, #eef7fd 100%);
+    color: #16324a;
+    font: 15px/1.9 system-ui, -apple-system, "Segoe UI", "Microsoft YaHei", sans-serif;
+    padding: 48px 40px 200px;
+    box-sizing: border-box;
+  }
+  h1 { font-size: 22px; margin: 0 0 6px; }
+  p { margin: 6px 0; max-width: 640px; }
+  code { background: rgba(255,255,255,.6); padding: 1px 6px; border-radius: 5px; font-size: 13px; }
+  .row { margin-top: 22px; display: flex; gap: 10px; flex-wrap: wrap; }
+  button {
+    padding: 8px 18px; border: 0; border-radius: 999px;
+    background: #4b97dd; color: #fff; font-size: 14px; cursor: pointer;
+  }
+  button:hover { background: #2f7fd0; }
+  .hint { margin-top: 26px; font-size: 13px; opacity: .7; }
+</style>
+</head>
+<body>
+
+<h1>鲸鱼娘挂件 · 本地演示</h1>
+<p>左下角就是她。页面里没有任何框架，只引了 <code>../src/whale-girl.css</code> 和 <code>../src/whale-girl.js</code>。</p>
+
+<div class="row">
+  <button id="fire">发一条弹幕</button>
+  <button id="boss">召唤老板</button>
+  <button id="reset">恢复默认位置</button>
+</div>
+
+<p class="hint">
+  点鲸鱼 = 投喂 +8；按住可以拖到任意位置；连点五次她会生气，停手 10 秒自己消气。<br>
+  她还会读 <code>wg:danmaku</code> 事件，按关键词和人名接话。
+</p>
+
+<script>
+  // 演示页把老板立绘指到本地文件；正式站点默认就是 /img/lobster.svg
+  window.WG_BOSS_IMG = 'img/lobster.svg';
+</script>
+<script src="../src/whale-girl.js"></script>
+<script>
+  var LINES = [
+    ['前端小李', '这个 bug 又出现了'],
+    ['摸鱼办主任', '今天又摸鱼了'],
+    ['老铁', '双击 666，关注不迷路'],
+    ['产品经理', '这个需求很简单，明天上线没问题吧']
+  ];
+
+  document.getElementById('fire').addEventListener('click', function () {
+    var item = LINES[Math.floor(Math.random() * LINES.length)];
+    document.dispatchEvent(new CustomEvent('wg:danmaku', {
+      detail: { name: item[0], text: item[1] }
+    }));
+  });
+
+  document.getElementById('boss').addEventListener('click', function () {
+    document.dispatchEvent(new CustomEvent('wg:danmaku', {
+      detail: { name: '龙虾娘老板', text: '查岗了，工位都坐好' }
+    }));
+  });
+
+  document.getElementById('reset').addEventListener('click', function () {
+    try { window.localStorage.removeItem('wg-pos'); } catch (e) {}
+    location.reload();
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="320" height="320" role="img" aria-label="鲸鱼娘">
+  <defs>
+    <linearGradient id="wgBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#eaf7ff"/>
+      <stop offset="100%" stop-color="#cfe7fb"/>
+    </linearGradient>
+    <linearGradient id="wgBody" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#a9e0ff"/>
+      <stop offset="100%" stop-color="#4b97dd"/>
+    </linearGradient>
+    <clipPath id="wgFrame">
+      <rect x="0" y="0" width="120" height="120" rx="26" ry="26"/>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#wgFrame)">
+    <rect x="0" y="0" width="120" height="120" fill="url(#wgBg)"/>
+    <ellipse cx="60" cy="112" rx="42" ry="9" fill="#b9d9f2" opacity="0.45"/>
+
+    <!-- 尾鳍 -->
+    <path d="M20 62c-9-5-13-14-10-23 7 5 13 6 18 5-3 6-4 12-3 18z" fill="#4b97dd"/>
+    <!-- 身体 -->
+    <ellipse cx="64" cy="64" rx="38" ry="30" fill="url(#wgBody)"/>
+    <!-- 肚皮 -->
+    <ellipse cx="66" cy="78" rx="27" ry="15" fill="#f2fbff" opacity="0.92"/>
+    <!-- 喷水 -->
+    <path d="M56 37c2-10 10-16 18-14-5 4-7 9-8 14z" fill="#7fc2f0"/>
+    <!-- 耳机头梁 -->
+    <path d="M30 58c0-20 16-32 34-32s34 12 34 32" fill="none" stroke="#2c3e5c" stroke-width="5" stroke-linecap="round"/>
+    <rect x="24" y="52" width="12" height="20" rx="6" fill="#2c3e5c"/>
+    <rect x="26" y="56" width="8" height="12" rx="4" fill="#ffd166"/>
+    <!-- 嘴边的耳机线 -->
+    <path d="M36 72c8 6 16 6 20 2" fill="none" stroke="#2c3e5c" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="57" cy="75" r="3.4" fill="#ffd166"/>
+    <!-- 眼睛 -->
+    <g class="wg-eyes">
+      <ellipse cx="56" cy="62" rx="5" ry="6.4" fill="#1b3350"/>
+      <ellipse cx="78" cy="62" rx="5" ry="6.4" fill="#1b3350"/>
+      <circle cx="57.6" cy="59.8" r="1.9" fill="#ffffff"/>
+      <circle cx="79.6" cy="59.8" r="1.9" fill="#ffffff"/>
+    </g>
+    <!-- 腮红 -->
+    <ellipse cx="47" cy="72" rx="5" ry="3" fill="#ffb3c7" opacity="0.9"/>
+    <ellipse cx="87" cy="72" rx="5" ry="3" fill="#ffb3c7" opacity="0.9"/>
+    <!-- 嘴 -->
+    <path d="M63 72c2 3 6 3 8 0" fill="none" stroke="#1b3350" stroke-width="2" stroke-linecap="round"/>
+    <!-- 胸鳍 -->
+    <path d="M44 84c-6 6-14 8-18 4 4-6 10-9 16-9z" fill="#6fb7ec"/>
+
+    <!-- 笔记本 -->
+    <g>
+      <rect x="52" y="84" width="40" height="20" rx="3" fill="#21324c"/>
+      <rect x="56" y="88" width="18" height="2.4" rx="1.2" fill="#7ee0a0"/>
+      <rect x="56" y="92.6" width="26" height="2.4" rx="1.2" fill="#ffd166"/>
+      <rect x="56" y="97.2" width="12" height="2.4" rx="1.2" fill="#9cc7ff"/>
+    </g>
+
+    <!-- 被投喂的小鱼 -->
+    <g class="wg-fish">
+      <ellipse cx="104" cy="34" rx="7" ry="4.4" fill="#ffb26b"/>
+      <path d="M111 34l6-4v8z" fill="#ff9a4d"/>
+      <circle cx="101" cy="33" r="0.9" fill="#21324c"/>
+    </g>
+  </g>
+</svg>
