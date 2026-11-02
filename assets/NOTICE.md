@@ -47,8 +47,8 @@
 | `web/assets/shots/customize.png` | 91200 | `1341be54f5f86eaed6a52313f4446323f5b51cd112b94cbc0dbfdb50d80d0f4e` |
 | `web/assets/shots/mobile.png` | 205989 | `35b157536c86aceb9d67d7545d0680b5427b2b6ed9a95ec3f80fdf5dc37f5387` |
 | `web/assets/shots/build.png` | 230149 | `688197e7d1746e8fe428b6fe8bbb65164c6fa855dc80ada07c537c27ecf302ac` |
-| `docs/competition-post.md` | 15129 | `4a45bc98503cf61d21481877bbfa872dc4a46d8d85b494e7b8a759ef330bd69b` |
-| `README.md` | 9347 | `dba5d0a13ba6e289f21fd9c59d3a3f938bb705783eff31d6d9fea5f7a439c3d0` |
+| `docs/competition-post.md` | 15373 | `77bef096083b2ba3e4159014ff39d9d0bf2e249c7ed6e4218976fcf8bb64d98d` |
+| `README.md` | 9526 | `9f513ec2b186ad7b7de9e10585c5872746bbecbfe1837831699592873e057411` |
 
 `web/assets/social-preview.png` 同样写入 `Author` / `Copyright` / `Comment` 元数据；页面截图为展示站实拍，转载时请注明作者与仓库地址。
 
