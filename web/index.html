@@ -241,7 +241,7 @@
       <article class="tcard reveal" data-state="boss">
         <div class="tcard-top"><span class="tnum">03</span><span class="tstate">boss</span></div>
         <h3>龙虾娘查岗</h3>
-        <p>摸鱼时每秒 70% 概率被查岗，窗口只有 3 秒。点一下有 15% 概率溜掉，否则扣 6 个鱼币。</p>
+        <p>摸鱼时每秒都有 70% 的概率被撞见，但一次摸鱼最多查一回。窗口只有 3 秒，点一下有 15% 概率溜掉，否则扣 6 个鱼币。</p>
         <div class="tmeta">p = 0.7 · 3s 窗口</div>
       </article>
       <article class="tcard reveal" data-state="angry">
@@ -348,10 +348,10 @@
               <tr><td>work</td><td>tick</td><td>t mod 20 = 0</td><td>slack</td></tr>
               <tr><td>work</td><td>tick</td><td>02:00–05:00</td><td>sleep</td></tr>
               <tr><td>work</td><td>tap</td><td>4s 内 ≥ 5 次</td><td>angry</td></tr>
-              <tr><td>slack</td><td>tick</td><td>p &lt; 0.7</td><td>boss</td></tr>
+              <tr><td>slack</td><td>tick</td><td>p &lt; 0.7 且本次未查</td><td>boss</td></tr>
               <tr><td>slack</td><td>tick</td><td>4s 结束</td><td>work</td></tr>
-              <tr><td>boss</td><td>tick</td><td>3s 窗口耗尽</td><td>angry <span class="neg">−6 / +6</span></td></tr>
-              <tr><td>boss</td><td>tap</td><td>q &lt; 0.15</td><td>work <span class="pos">逃脱</span></td></tr>
+              <tr><td>boss</td><td>tick</td><td>3s 窗口耗尽</td><td>slack <span class="neg">−6 / +6</span></td></tr>
+              <tr><td>boss</td><td>tap</td><td>q &lt; 0.15</td><td>slack <span class="pos">逃脱</span></td></tr>
               <tr><td>angry</td><td>timeout</td><td>静默 ≥ 10s</td><td>work</td></tr>
               <tr><td>work</td><td>full</td><td>coins ≥ cap</td><td>work <span class="pos">班次 +1</span></td></tr>
             </tbody>
@@ -371,23 +371,23 @@
 
     <div class="weight-grid">
       <div class="weight-number reveal">
-        <div><span class="big">14.8</span><span class="unit">KB</span></div>
+        <div><span class="big">15.0</span><span class="unit">KB</span></div>
         <p>gzip 后的全部体积。比一张普通的 JPEG 配图还小，比主流 Live2D 方案低约两个数量级。</p>
         <p class="weight-source">参赛版按 gzip level 9 实测；原版线上数据见 <a href="https://github.com/JINRONG121312/whale-in-my-web/blob/main/docs/report.md" target="_blank" rel="noopener">docs/report.md</a></p>
       </div>
 
       <div class="weight-chart reveal">
-        <div class="size-row"><span class="size-name">挂件 JS（含鱼形）</span><div class="size-bar"><span style="--w:69%"></span></div><span class="size-num">10.2 KB</span></div>
-        <div class="size-row"><span class="size-name">挂件 CSS</span><div class="size-bar"><span style="--w:25%"></span></div><span class="size-num">3.7 KB</span></div>
+        <div class="size-row"><span class="size-name">挂件 JS（含鱼形）</span><div class="size-bar"><span style="--w:69%"></span></div><span class="size-num">10.4 KB</span></div>
+        <div class="size-row"><span class="size-name">挂件 CSS</span><div class="size-bar"><span style="--w:26%"></span></div><span class="size-num">3.8 KB</span></div>
         <div class="size-row"><span class="size-name">龙虾立绘</span><div class="size-bar"><span style="--w:5%"></span></div><span class="size-num">0.8 KB</span></div>
-        <div class="size-row size-row--total"><span class="size-name">合计</span><div class="size-bar"><span style="--w:100%"></span></div><span class="size-num">14.8 KB</span></div>
+        <div class="size-row size-row--total"><span class="size-name">合计</span><div class="size-bar"><span style="--w:100%"></span></div><span class="size-num">15.0 KB</span></div>
         <div class="size-row size-row--compare"><span class="size-name">Live2D</span><div class="size-bar size-bar--compare"><span style="--w:100%"></span></div><span class="size-num">1–3 MB</span></div>
-        <p class="chart-note">同一表现力下，体积降低约 69×–207×。动画只作用于 <code>transform</code> 与 <code>opacity</code>，不触发重排与重绘。</p>
+        <p class="chart-note">同一表现力下，体积降低约 68×–205×。动画只作用于 <code>transform</code> 与 <code>opacity</code>，不触发重排与重绘。</p>
       </div>
     </div>
 
     <div class="perf-grid">
-      <div class="perf-card reveal"><b>&lt; 40 ms</b><span>3 Mbps 下首屏增量</span></div>
+      <div class="perf-card reveal"><b>&lt; 42 ms</b><span>3 Mbps 下首屏增量</span></div>
       <div class="perf-card reveal"><b>&lt; 0.5 ms</b><span>单帧动画耗时</span></div>
       <div class="perf-card reveal"><b>≈ 0</b><span>空闲 CPU 占用</span></div>
     </div>
@@ -480,7 +480,7 @@
       </div>
       <div class="note-card reveal">
         <h3>手机端也有的小互动</h3>
-        <p>窄屏收成头像，点开卡片可以投喂，还能点「摸鱼呢？／夸夸你／老板来了」让她接一句——用的是同一套回复规则，不发一个请求。查岗与生气在手机端自动关闭。</p>
+        <p>窄屏收成头像，点开卡片可以投喂，还能点「摸鱼呢？／夸夸你／老板来了」让她接一句——用的是同一套回复规则，不发一个请求。查岗和连戳在窄屏照常生效，只是入口换成了卡片里的打赏按钮。</p>
       </div>
       <div class="note-card reveal">
         <h3>原创与许可</h3>

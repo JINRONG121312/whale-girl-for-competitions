@@ -101,17 +101,23 @@ html[data-theme="dark"] .wg-body {
 .wg-say {
   position: absolute;
   left: 4px;
-  bottom: calc(100% + 2px);
+  bottom: calc(100% - 8px);
   width: min(288px, calc(100vw - 44px));
   max-height: min(46vh, 360px);
+  /* 气泡的尾巴探出盒子 8px，不给这段内边距就会永远挂着一条滚动条 */
+  padding-bottom: 10px;
   overflow-y: auto;
   overscroll-behavior: contain;
   -webkit-overflow-scrolling: touch;
-  scrollbar-width: thin;
+  scrollbar-width: none;
   display: flex;
   flex-direction: column;
   gap: 6px;
   pointer-events: none;
+}
+
+.wg-say::-webkit-scrollbar {
+  display: none;
 }
 
 .wg-say > * {
@@ -383,7 +389,7 @@ html[data-theme="dark"] .wg-act {
     left: 0;
     right: 0;
     width: min(74vw, 300px);
-    bottom: calc(100% + 4px);
+    bottom: calc(100% - 6px);
     max-height: 40vh;
   }
 

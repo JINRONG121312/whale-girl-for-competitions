@@ -5,9 +5,9 @@
 [![Live](https://img.shields.io/badge/live-on%20Qoder%20Sites-4b97dd?style=flat-square)](https://fat-fish-in-my-web-k9qghxjx4u5.qoder.website/)
 [![Stars](https://img.shields.io/github/stars/JINRONG121312/whale-girl-for-competitions?style=flat-square&color=4b97dd)](https://github.com/JINRONG121312/whale-girl-for-competitions/stargazers)
 [![License](https://img.shields.io/badge/license-PolyForm%20Noncommercial%201.0.0-ffb26b?style=flat-square)](LICENSE)
-[![Size](https://img.shields.io/badge/gzip-14.8%20KB-35c07a?style=flat-square)](#%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AF-148-kb)
+[![Size](https://img.shields.io/badge/gzip-15.0%20KB-35c07a?style=flat-square)](#%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AF-150-kb)
 [![Dependencies](https://img.shields.io/badge/dependencies-0-35c07a?style=flat-square)](#%E5%BF%AB%E9%80%9F%E6%8E%A5%E5%85%A5)
-[![Checks](https://img.shields.io/badge/browser%20checks-49%2F49-35c07a?style=flat-square)](docs/competition-post.md)
+[![Checks](https://img.shields.io/badge/browser%20checks-50%2F50-35c07a?style=flat-square)](docs/competition-post.md)
 
 > 一只住在网页左下角的 Q 版大肥鱼：会写代码、会摸鱼、会被龙虾娘查岗、会读你的弹幕。
 
@@ -56,14 +56,14 @@ COMMERCIAL.md            商业授权说明
 |---|---|
 | 状态机 | `work` → `slack`（每 20s，持续 4s）→ 可能被 `boss` 查岗；深夜 `sleep`；连点 `angry` |
 | 经济系统 | 打赏 +8，被抓 −6，但**上限 +6**（越被抓罐子越大）；攒满一罐直接换班 |
-| 互动分流 | 点鱼鳍 = 打赏并甩尾游开；点身体 = 摸摸，不进金币玩法 |
+| 互动分流 | 点鱼身 = 摸摸，+8 并甩尾游开；卡片里的「打赏 +8」是同一个罐子的第二个入口，窄屏也能用 |
 | 气泡锁 | 一句台词占住气泡 15 秒（`HOLD_MS`），后续消息排队不覆盖 |
 | 弹幕联动 | 监听 `wg:danmaku`，按关键词 + 昵称接话；`wg:boss` 可从外部召唤查岗 |
 | 拖动 | 拖到任意位置，`clampPos()` 钳在视口内，超过 62% 宽度时气泡自动翻转 |
 | 参数注入 | `window.WG_CONFIG` 或地址栏 `?slack=&boss=&penalty=&cap=` 直接改作息 |
-| 移动端 | 收成圆形头像，点一下展开小卡片，卡片里有「点词接话」快捷气泡 |
+| 移动端 | 收成圆形头像，点一下展开小卡片，卡片里有「点词接话」快捷气泡；查岗与生气照常，逃脱走打赏按钮 |
 | 暗色模式 | 跟随 `html[data-theme="dark"]` |
-| 体积 | gzip 后 **14.8 KB**，零运行时依赖，主角色内联在脚本里 |
+| 体积 | gzip 后 **15.0 KB**，零运行时依赖，主角色内联在脚本里 |
 
 ## 快速接入
 
@@ -118,7 +118,7 @@ var CAP_STEP = 6;         // 被抓后上限涨多少
 
 ## 验收
 
-本地起静态服务后，用 headless Edge 在 **1440×900** 和 **390×844** 两套视口跑交互检查：投喂、摸摸、查岗、逃脱、连戳生气、10 秒消气、气泡锁、弹幕回复、快捷词、主题持久化、参数应用、接入代码生成、手机端降级与展开、拖动钳边……**49 项全部通过，控制台无报错，无横向溢出**。
+本地起静态服务后，用 headless Edge 在 **1440×900** 和 **390×844** 两套视口跑交互检查：投喂、摸摸、查岗、逃脱、连戳生气、10 秒消气、气泡锁、弹幕回复、快捷词、主题持久化、参数应用、接入代码生成、窄屏收成头像与展开、窄屏查岗与连戳、拖动钳边与气泡翻转……**50 项全部通过，控制台无报错，无横向溢出，气泡容器不再出现滚动条**。
 
 ## 原创与资产
 
@@ -145,7 +145,7 @@ var CAP_STEP = 6;         // 被抓后上限涨多少
 
 思路和设计可以随便借鉴——**思想不受版权保护，欢迎你做一个更好的**。
 
-## 为什么是 14.8 KB
+## 为什么是 15.0 KB
 
 因为原来那个站点跑在 **2 核 2G、3 Mbps** 的云服务器上，公网峰值 375 KB/s——每多 100 KB，访客就多等 0.27 秒。
 
@@ -153,12 +153,12 @@ var CAP_STEP = 6;         // 被抓后上限涨多少
 
 | 文件 | gzip |
 |---|---|
-| `whale-girl.js`（状态机、渲染、交互、文案 + 内联鱼形 SVG） | 10,465 B |
-| `whale-girl.css`（主题、动效、响应式） | 3,832 B |
+| `whale-girl.js`（状态机、渲染、交互、文案 + 内联鱼形 SVG） | 10,618 B |
+| `whale-girl.css`（主题、动效、响应式） | 3,921 B |
 | `lobster.svg`（第二角色） | 815 B |
-| **合计** | **15,112 B ≈ 14.8 KB** |
+| **合计** | **15,354 B ≈ 15.0 KB** |
 
-对比主流 Live2D 看板娘（1–3 MB），是 **69×–207×** 的差距。推导过程与效度威胁见原版 [docs/report.md](docs/report.md)。
+对比主流 Live2D 看板娘（1–3 MB），是 **68×–205×** 的差距。推导过程与效度威胁见原版 [docs/report.md](docs/report.md)。
 
 ## 说明
 

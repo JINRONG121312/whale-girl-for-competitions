@@ -186,7 +186,7 @@
     }
   }
 
-  // 窄屏（手机）只当看板娘：不打赏、不查岗
+  // 窄屏（手机）收成圆形头像：点鱼身只展开卡片，打赏与点词接话走卡片里的按钮
   function isCompact() {
     return !!(window.matchMedia && window.matchMedia('(max-width: 767px)').matches);
   }
@@ -202,6 +202,7 @@
       elapsed: 0,
       slackLeft: 0,
       bossActive: false,
+      checked: false,
       bossLeft: 0,
       angry: false,
       line: pick(LINES.work),
@@ -345,6 +346,20 @@
       flash('data-hit', 600);
     }
 
+    // 查岗时点她：赌 15% 溜掉，没溜掉就是被抓
+    function bossTap() {
+      if (Math.random() < ESCAPE_CHANCE) {
+        game.bossActive = false;
+        game.bossLeft = 0;
+        game.mood = 'happy';
+        say(pick(LINES.escape), ACTS.escape);
+      } else {
+        caught();
+        clearHold();
+      }
+      render();
+    }
+
     function nextShift() {
       game.coins = 0;
       writeNum(KEY_COINS, 0);
@@ -380,8 +395,9 @@
         if (game.bossActive) {
           game.bossLeft -= 1;
           if (game.bossLeft <= 0) caught();
-        } else if (!isCompact() && game.slackLeft > 1 && Math.random() < BOSS_CHANCE) {
+        } else if (!game.checked && game.slackLeft > 1 && Math.random() < BOSS_CHANCE) {
           game.bossActive = true;
+          game.checked = true;
           game.bossLeft = BOSS_LEN;
           game.line = pick(LINES.boss);
           game.act = ACTS.boss;
@@ -410,6 +426,7 @@
         game.phase = 'slack';
         game.slackLeft = SLACK_LEN;
         game.bossActive = false;
+        game.checked = false;
         game.mood = 'sly';
         game.line = pick(LINES.slack);
         game.act = ACTS.slack;
@@ -430,6 +447,18 @@
       if (DEEP_NIGHT) {
         say('别吵，睡着了', ACTS.sleep);
         render();
+        return;
+      }
+
+      // 连点打赏一样会急眼
+      if (isRapidClick()) {
+        becomeAngry();
+        return;
+      }
+
+      // 老板在场时递钱，先看她溜不溜得掉
+      if (game.bossActive) {
+        bossTap();
         return;
       }
 
@@ -482,16 +511,7 @@
       }
 
       if (game.bossActive) {
-        if (Math.random() < ESCAPE_CHANCE) {
-          game.bossActive = false;
-          game.bossLeft = 0;
-          game.mood = 'happy';
-          say(pick(LINES.escape), ACTS.escape);
-        } else {
-          caught();
-          clearHold();
-        }
-        render();
+        bossTap();
         return;
       }
 
@@ -544,10 +564,11 @@
 
     // 演示页专用：外部可召唤一次查岗；正式接入时不需要
     document.addEventListener('wg:boss', function () {
-      if (DEEP_NIGHT || isCompact() || game.angry) return;
+      if (DEEP_NIGHT || game.angry) return;
       game.phase = 'slack';
       game.slackLeft = Math.max(SLACK_LEN, 5);
       game.bossActive = true;
+      game.checked = true;
       game.bossLeft = 30;
       game.mood = 'sly';
       say(pick(LINES.boss), ACTS.boss);

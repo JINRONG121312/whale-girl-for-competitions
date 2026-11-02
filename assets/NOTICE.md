@@ -34,20 +34,21 @@
 
 | 文件 | 字节 | SHA-256 |
 |---|---|---|
-| `web/src/whale-girl.js` | 29807 | `475ff6864f344709cd80c26d2c313b5352b63b1dbda507a48cdc2ab6f23ccd21` |
-| `web/src/whale-girl.css` | 12383 | `4a655761c12653e73ddf6223be10cdd2daa5b7c09125ca7e31be3f498b1b79cc` |
+| `web/src/whale-girl.js` | 30293 | `1566ed9ac14112942fe43a1181130fb2cbce0f54dae4cfa88c347475be2dae43` |
+| `web/src/whale-girl.css` | 12553 | `8a526ac8ed61aed8a2a926e2c2a8aa8bae6ba22819081e40dc14a6eb14641caa` |
 | `web/assets/fat-fish.svg` | 3968 | `5900e5ca75d59c3b123a34f63d99c739b27710f584cd5e1ee641c06d7a15cea0` |
 | `web/img/lobster.svg` | 2213 | `8f78a160e88a03c1346e0229f7c38b9105f34cc463d9c09b282d2bc8a1186ee8` |
-| `web/index.html` | 33712 | `3ce453294818e3f0b3c72673949600f4a7e72c428b4d5cea5b92abb61d889ecf` |
-| `web/app.js` | 20583 | `8bcf406db7bbe70b90861aba7bb7a9ff6ab4a385a082883284ac2d359ca1dcdf` |
+| `web/index.html` | 33816 | `8a08af8e4210e5131436de5e00fdd18497a8f277dc20e9ef16e76cd195031f70` |
+| `web/app.js` | 20845 | `a1122fde59bc254abe5d93ad178924d5c2a7881fff53f6a1e6e3a474a2e9f834` |
 | `web/styles.css` | 35425 | `f179829d037e86330cfe8751c93eaca6522cc807ee3f7f52b66fe1352adfb057` |
 | `web/assets/social-preview.png` | 308964 | `276478648898697654ebb9d7a4b520b6d8f712824fd5888f26312c040b9dcd2c` |
 | `web/assets/shots/hero.png` | 284843 | `59e67de0591569ee274768d0055acb3e1f7e34fa7f8cbc377c3a4f9b246d1870` |
-| `web/assets/shots/fsm.png` | 108934 | `22e151c929c0b4fc46b11d09914e7ce24a05929d3d0c85ac11bf1034c2c5cace` |
+| `web/assets/shots/fsm.png` | 86635 | `5c9f18e5da585c1ccf12d02719fe1723de60315bf86fa21249a046a485e1032d` |
 | `web/assets/shots/customize.png` | 91200 | `1341be54f5f86eaed6a52313f4446323f5b51cd112b94cbc0dbfdb50d80d0f4e` |
 | `web/assets/shots/mobile.png` | 205989 | `35b157536c86aceb9d67d7545d0680b5427b2b6ed9a95ec3f80fdf5dc37f5387` |
 | `web/assets/shots/build.png` | 124485 | `21282ec6413e21e0c32f6f1c8b9950e517e7288f70e54163eb2726e691739f8e` |
-| `docs/competition-post.md` | 13024 | `a4f44fe9588d4427a90afcf13a3a13586270a4c52186c4a38a67f3b8879064f6` |
+| `docs/competition-post.md` | 13297 | `26cdb3652e7000a6436e9e133e7227767cbd815ca56666f6671cea078b3588c2` |
+| `README.md` | 8746 | `73433ffadcef1e1c8ad302dae4a118a384db68244e3ed54fcad1f912fd5dbccf` |
 
 `web/assets/social-preview.png` 同样写入 `Author` / `Copyright` / `Comment` 元数据；页面截图为展示站实拍，转载时请注明作者与仓库地址。
 

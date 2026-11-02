@@ -258,12 +258,13 @@
     btnBoss.addEventListener('click', function () {
       var node = widget();
       if (!node) { toast('她还在加载，稍等一下。'); return; }
-      if (isMobile()) { toast('查岗演示在手机端暂不启用。'); return; }
       if (widgetSleeping(node)) { toast('她睡着了，龙虾娘今天也下班了。'); return; }
       if (node.getAttribute('data-angry') === 'on') { toast('她还在气头上，先等她消气。'); return; }
 
       document.dispatchEvent(new CustomEvent('wg:boss'));
-      toast('龙虾娘来了。演示窗口 30 秒，点她试试 15% 的逃脱概率。');
+      toast(isMobile()
+        ? '龙虾娘来了。点开卡片点「打赏」，试试 15% 的逃脱概率。'
+        : '龙虾娘来了。演示窗口 30 秒，点她试试 15% 的逃脱概率。');
     });
   }
 
@@ -271,10 +272,16 @@
     btnAngry.addEventListener('click', function () {
       var node = widget();
       if (!node) { toast('她还在加载，稍等一下。'); return; }
-      if (isMobile()) { toast('连戳演示在手机端暂不启用。'); return; }
       if (widgetSleeping(node)) { toast('她睡着了，戳了也不理你。'); return; }
 
-      var pet = node.querySelector('.wg-pet');
+      // 窄屏点鱼身只会展开卡片，连戳走卡片里的打赏按钮
+      var compact = isMobile();
+      if (compact && node.getAttribute('data-open') !== 'on') {
+        var petBtn = node.querySelector('.wg-pet');
+        if (petBtn) petBtn.click();
+      }
+
+      var pet = node.querySelector(compact ? '.wg-tip' : '.wg-pet');
       if (!pet) return;
 
       var count = 0;
@@ -574,16 +581,16 @@
     if (btnFeed) btnFeed.textContent = mobile ? '展开卡片' : '投喂 +8';
 
     if (btnBoss) {
-      btnBoss.disabled = mobile;
-      btnBoss.title = mobile ? '手机端只当看板娘，不启用查岗' : '';
+      btnBoss.disabled = false;
+      btnBoss.title = mobile ? '窄屏也会查岗：被抓了点开卡片点打赏，试试溜掉' : '';
     }
     if (btnAngry) {
-      btnAngry.disabled = mobile;
-      btnAngry.title = mobile ? '手机端只当看板娘，不启用连戳' : '';
+      btnAngry.disabled = false;
+      btnAngry.title = mobile ? '窄屏会先展开卡片，再连点 5 次打赏' : '';
     }
     if (consoleNote && consoleNote.childNodes[0] && consoleNote.childNodes[0].nodeType === 3) {
       consoleNote.childNodes[0].nodeValue = mobile
-        ? '手机端她收成头像：点开卡片能投喂、能点词接话，查岗与生气不启用 · '
+        ? '手机端她收成头像：点开卡片能投喂、能点词接话，查岗与生气照常 · '
         : '遥控的是左下角的真身 · ';
     }
   }
