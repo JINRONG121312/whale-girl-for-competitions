@@ -7,7 +7,7 @@
 [![License](https://img.shields.io/badge/license-PolyForm%20Noncommercial%201.0.0-ffb26b?style=flat-square)](LICENSE)
 [![Size](https://img.shields.io/badge/gzip-15.0%20KB-35c07a?style=flat-square)](#%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AF-150-kb)
 [![Dependencies](https://img.shields.io/badge/dependencies-0-35c07a?style=flat-square)](#%E5%BF%AB%E9%80%9F%E6%8E%A5%E5%85%A5)
-[![Checks](https://img.shields.io/badge/browser%20checks-50%2F50-35c07a?style=flat-square)](docs/competition-post.md)
+[![Checks](https://img.shields.io/badge/browser%20checks-54%2F54-35c07a?style=flat-square)](docs/competition-post.md)
 
 > 一只住在网页左下角的 Q 版大肥鱼：会写代码、会摸鱼、会被龙虾娘查岗、会读你的弹幕。
 
@@ -16,9 +16,9 @@
 | 参赛信息 | |
 |---|---|
 | 团队 | **oceanplay** |
-| 作者 | **董金荣**（GitHub：JINRONG121312） |
+| 作者 | **公冰蓝**（GitHub：JINRONG121312） |
 | 赛道 | LifeHack · 生活娱乐 |
-| 开发工具 | Qoder（模型 Qw3.8-Flash，一次连续工作约 1 小时） |
+| 开发工具 | Qoder（模型 Qw3.8-Flash，一次连续工作约 1 小时）：写代码、起服务、在浏览器里 Debug、一键发布 |
 | 原版仓库 | https://github.com/JINRONG121312/whale-in-my-web |
 
 这个仓库是**参赛版**：角色按「Q 版大肥鱼」重绘，挂件在原版基础上补了参数注入、演示用查岗事件、气泡锁、拖动边界钳制和手机端交互，并配了一个能真的玩的展示站。
@@ -118,11 +118,13 @@ var CAP_STEP = 6;         // 被抓后上限涨多少
 
 ## 验收
 
-本地起静态服务后，用 headless Edge 在 **1440×900** 和 **390×844** 两套视口跑交互检查：投喂、摸摸、查岗、逃脱、连戳生气、10 秒消气、气泡锁、弹幕回复、快捷词、主题持久化、参数应用、接入代码生成、窄屏收成头像与展开、窄屏查岗与连戳、拖动钳边与气泡翻转……**50 项全部通过，控制台无报错，无横向溢出，气泡容器不再出现滚动条**。
+这套检查是 Qoder 自己去浏览器里跑的，不是「改完让你刷新看看」：起本地服务 → 拉起无头浏览器 → 注入断言 → 两套视口各跑一遍 → 全程挂 console 监听 → 截图回看布局。今天那两个问题（气泡上拖不动的滚动条、窄屏被 `disabled` 掉的遥控按钮）就是这么在运行时里复现并定位的，顺带还抓出一个用户没报的竞态——被抓后同一次摸鱼里重复查岗，金币被二次扣减。
+
+本地起静态服务后，用 headless Edge 在 **1440×900** 和 **390×844** 两套视口跑交互检查：投喂、摸摸、查岗、逃脱、连戳生气、10 秒消气、气泡锁、弹幕回复、快捷词、主题持久化、参数应用、接入代码生成、窄屏收成头像与展开、窄屏查岗与连戳、拖动钳边与气泡翻转……**54 项全部通过，控制台无报错，无横向溢出，气泡容器不再出现滚动条**。改完必须重跑一遍才重新发布。
 
 ## 原创与资产
 
-- 角色立绘、代码、文案、截图均为**原创**，作者董金荣（JINRONG121312）。
+- 角色立绘、代码、文案、截图均为**原创**，作者公冰蓝（JINRONG121312）。
 - 最初想做的是当时很火的「鲸鱼娘」桌宠主题，Qoder 提醒那个素材是 **CC BY-NC-SA**、不能搬运，于是让 Qoder 重新生成了一版原创的大肥鱼形象，并把她的动作补全。
 - 参赛版新增的交互（打赏/摸摸分流、气泡锁、拖动钳制、手机端快捷气泡、参数注入）移植自我本人另一款 Hexo 博客里的鲸鱼插件——同一个作者，不是他人作品。
 - 博客版带一个 AI 聊天后端，这次**没有**移植：站点是 HTTPS，后端是 HTTP 且没有 CORS；而且为了聊天引入服务器，和「小、省、零依赖」的前提是冲突的。
