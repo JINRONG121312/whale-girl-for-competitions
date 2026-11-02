@@ -47,7 +47,7 @@
 | `web/assets/shots/customize.png` | 91200 | `1341be54f5f86eaed6a52313f4446323f5b51cd112b94cbc0dbfdb50d80d0f4e` |
 | `web/assets/shots/mobile.png` | 205989 | `35b157536c86aceb9d67d7545d0680b5427b2b6ed9a95ec3f80fdf5dc37f5387` |
 | `web/assets/shots/build.png` | 124485 | `21282ec6413e21e0c32f6f1c8b9950e517e7288f70e54163eb2726e691739f8e` |
-| `docs/competition-post.md` | 12948 | `32ff775788e7899fd11e59d42a4c025b6696868388596566d945bec96b615e44` |
+| `docs/competition-post.md` | 13024 | `a4f44fe9588d4427a90afcf13a3a13586270a4c52186c4a38a67f3b8879064f6` |
 
 `web/assets/social-preview.png` 同样写入 `Author` / `Copyright` / `Comment` 元数据；页面截图为展示站实拍，转载时请注明作者与仓库地址。
 
