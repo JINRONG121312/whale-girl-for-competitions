@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>大肥鱼 · 在网页左下角养一只 Q 版大肥鱼</title>
+<meta name="description" content="一个纯前端、零依赖、手绘 SVG 的 Q 版网页看板娘。会写代码、会摸鱼、会被龙虾娘查岗，也会读你的弹幕。2026 Qoder 高校创造力大赛 LifeHack 参赛作品。">
+<meta name="author" content="JINRONG121312">
+<meta name="theme-color" content="#f4faff">
+<script>
+  // 尽早标记 JS 可用并恢复主题，避免首屏闪烁
+  (function () {
+    var d = document.documentElement;
+    d.classList.add('js');
+    try {
+      var t = localStorage.getItem('wg-site-theme');
+      if (t !== 'light' && t !== 'dark') {
+        t = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+      d.setAttribute('data-theme', t);
+    } catch (e) { /* 隐私模式忽略 */ }
+  })();
+</script>
+<link rel="icon" href="assets/fat-fish.svg" type="image/svg+xml">
+<link rel="canonical" href="https://fat-fish-in-my-web-k9qghxjx4u5.qoder.website/">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="src/whale-girl.css">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://fat-fish-in-my-web-k9qghxjx4u5.qoder.website/">
+<meta property="og:site_name" content="fat-fish-in-my-web">
+<meta property="og:title" content="大肥鱼 · 网页左下角的 Q 版看板娘">
+<meta property="og:description" content="会写代码、会摸鱼、会被龙虾娘查岗，也会读你的弹幕。纯前端、零依赖、手绘 SVG。">
+<meta property="og:image" content="https://fat-fish-in-my-web-k9qghxjx4u5.qoder.website/assets/social-preview.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="大肥鱼：网页左下角的 Q 版看板娘">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="大肥鱼 · 网页左下角的 Q 版看板娘">
+<meta name="twitter:description" content="会写代码、会摸鱼、会被龙虾娘查岗，也会读你的弹幕。纯前端、零依赖、手绘 SVG。">
+<meta name="twitter:image" content="https://fat-fish-in-my-web-k9qghxjx4u5.qoder.website/assets/social-preview.png">
+
+<script>
+  // 参赛演示版配置：必须在挂件脚本之前写入
+  (function () {
+    window.WG_BOSS_IMG = 'img/lobster.svg';
+    var p = new URLSearchParams(location.search);
+    var cfg = {};
+    if (p.has('slack')) cfg.slackEvery = Number(p.get('slack'));
+    if (p.has('boss')) cfg.bossChance = Number(p.get('boss'));
+    if (p.has('penalty')) cfg.penalty = Number(p.get('penalty'));
+    if (p.has('cap')) cfg.capStep = Number(p.get('cap'));
+    if (Object.keys(cfg).length) window.WG_CONFIG = cfg;
+  })();
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">跳到主要内容</a>
+
+<header class="site-header" id="site-header">
+  <a class="brand" href="#top" aria-label="fat-fish-in-my-web，回到顶部">
+    <img src="assets/fat-fish.svg" alt="" width="34" height="34">
+    <span class="brand-text"><b>fat-fish-in-my-web</b><small>网页里的大肥鱼</small></span>
+  </a>
+
+  <nav class="site-nav" aria-label="主导航">
+    <a href="#live">现场</a>
+    <a href="#day">她的一天</a>
+    <a href="#fsm">状态机</a>
+    <a href="#weight">重量</a>
+    <a href="#customize">定制</a>
+    <a href="#embed">接入</a>
+    <a href="#qoder">Qoder 记录</a>
+  </nav>
+
+  <div class="header-actions">
+    <a class="ghost-link" href="https://github.com/JINRONG121312/whale-in-my-web" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a>
+    <button class="theme-toggle" id="theme-toggle" type="button" aria-label="切换到深色模式" aria-pressed="false">
+      <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M20.5 14.4A8.6 8.6 0 0 1 9.6 3.5 8.7 8.7 0 1 0 20.5 14.4Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="4.1" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero" id="top">
+    <div class="hero-copy reveal">
+      <p class="eyebrow"><span class="pulse" aria-hidden="true"></span> 2026 Qoder 高校创造力大赛 · LifeHack 生活娱乐</p>
+      <h1>在网页左下角，<br><em>养一只大肥鱼</em></h1>
+      <p class="lede">15 KB 的纯前端挂件。手绘 SVG、零依赖，主角色直接内联进脚本；会写代码、会摸鱼、会被龙虾娘查岗，也会读你的弹幕。</p>
+
+      <div class="hero-actions">
+        <button class="btn btn-primary" id="hero-feed" type="button">摸摸她 <span class="btn-extra">+8 鱼币</span></button>
+        <a class="btn btn-ghost" href="#day">看她的一天</a>
+      </div>
+
+      <p class="whale-hint"><span class="hint-arrow" aria-hidden="true">↙</span> 她已经在你屏幕左下角了。按住可以拖走，位置会被记住。</p>
+
+      <dl class="stats">
+        <div><dt>15 KB</dt><dd>gzip 后全部体积</dd></div>
+        <div><dt>0</dt><dd>运行时依赖</dd></div>
+        <div><dt>5</dt><dd>个行为状态</dd></div>
+        <div><dt>2</dt><dd>个文件即可接入</dd></div>
+      </dl>
+    </div>
+
+    <div class="aquarium reveal" id="live" aria-label="大肥鱼实时观测窗与遥控器">
+      <div class="aquarium-sky">
+        <div class="bubbles" aria-hidden="true">
+          <i style="--x:10%;--d:10s;--s:5px;--delay:-2s"></i>
+          <i style="--x:22%;--d:13s;--s:3px;--delay:-7s"></i>
+          <i style="--x:38%;--d:9s;--s:6px;--delay:-4s"></i>
+          <i style="--x:58%;--d:14s;--s:4px;--delay:-9s"></i>
+          <i style="--x:74%;--d:11s;--s:7px;--delay:-1s"></i>
+          <i style="--x:88%;--d:12s;--s:3px;--delay:-6s"></i>
+        </div>
+
+        <div class="aquarium-label"><i aria-hidden="true"></i> LIVE · 观测窗 01</div>
+        <div class="danmaku-band" id="danmaku-band" aria-hidden="true"></div>
+
+        <div class="hero-whale" aria-hidden="true">
+          <svg viewBox="0 0 120 120">
+            <defs>
+              <linearGradient id="heroBody" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#c6ecff"/>
+                <stop offset="55%" stop-color="#7cc4f2"/>
+                <stop offset="100%" stop-color="#3f8fd8"/>
+              </linearGradient>
+              <linearGradient id="heroFin" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#8ed2ff"/>
+                <stop offset="100%" stop-color="#3f8fd8"/>
+              </linearGradient>
+            </defs>
+            <ellipse cx="62" cy="113" rx="40" ry="7" fill="#03111d" opacity="0.55"/>
+            <g class="tail">
+              <path d="M25 62C12 57 4 45 8 31c11 9 19 15 27 16-5 6-9 11-10 15z" fill="url(#heroFin)"/>
+              <path d="M25 66C15 69 6 79 8 92c10-8 18-13 26-15-5-5-8-8-9-11z" fill="url(#heroFin)" opacity="0.88"/>
+            </g>
+            <path d="M50 31c4-14 17-19 29-13-6 5-12 12-15 20z" fill="#5aa9e6"/>
+            <ellipse cx="64" cy="64" rx="43" ry="37" fill="url(#heroBody)"/>
+            <ellipse cx="66" cy="78" rx="31" ry="22" fill="#f6fcff" opacity="0.95"/>
+            <path d="M43 72c-9 4-15 12-13 20 7-6 14-11 20-13z" fill="#5aa9e6" opacity="0.92"/>
+            <path d="M65 29c-3-8 2-14 8-13-4 4-2 9 3 12z" fill="#7fc2f0"/>
+            <path d="M27 58c0-24 17-35 37-35s37 11 37 35" fill="none" stroke="#2c3e5c" stroke-width="5" stroke-linecap="round"/>
+            <rect x="19" y="51" width="14" height="23" rx="7" fill="#2c3e5c"/>
+            <rect x="21.5" y="55" width="9" height="15" rx="4.5" fill="#ffd166"/>
+            <rect x="95" y="51" width="14" height="23" rx="7" fill="#2c3e5c"/>
+            <rect x="97.5" y="55" width="9" height="15" rx="4.5" fill="#ffd166"/>
+            <path d="M33 74c3 7 8 10 14 8" fill="none" stroke="#2c3e5c" stroke-width="2.5" stroke-linecap="round"/>
+            <circle cx="47" cy="82" r="3" fill="#ffd166"/>
+            <g class="eyes">
+              <ellipse cx="52" cy="62" rx="6.2" ry="7.6" fill="#17304b"/>
+              <ellipse cx="76" cy="62" rx="6.2" ry="7.6" fill="#17304b"/>
+              <circle cx="54" cy="59.5" r="2.3" fill="#ffffff"/>
+              <circle cx="78" cy="59.5" r="2.3" fill="#ffffff"/>
+              <circle cx="50.5" cy="64.5" r="1" fill="#ffffff" opacity="0.8"/>
+              <circle cx="74.5" cy="64.5" r="1" fill="#ffffff" opacity="0.8"/>
+            </g>
+            <ellipse cx="39" cy="72" rx="6.5" ry="3.6" fill="#ffb3c7" opacity="0.9"/>
+            <ellipse cx="89" cy="72" rx="6.5" ry="3.6" fill="#ffb3c7" opacity="0.9"/>
+            <path d="M61 73c2 3.5 6 3.5 8 0" fill="none" stroke="#17304b" stroke-width="2" stroke-linecap="round"/>
+            <g>
+              <rect x="47" y="86" width="45" height="21" rx="3" fill="#21324c"/>
+              <rect x="51" y="90" width="20" height="2.4" rx="1.2" fill="#7ee0a0"/>
+              <rect x="51" y="94.6" width="28" height="2.4" rx="1.2" fill="#ffd166"/>
+              <rect x="51" y="99.2" width="13" height="2.4" rx="1.2" fill="#9cc7ff"/>
+            </g>
+            <path d="M42 87c-4 6-2 12 4 15 0-6 1-11 5-14z" fill="#5aa9e6"/>
+            <g class="fish">
+              <ellipse cx="103" cy="38" rx="6.5" ry="4" fill="#ffb26b"/>
+              <path d="M109 38l6-4v8z" fill="#ff9a4d"/>
+              <circle cx="100.5" cy="37" r="0.9" fill="#21324c"/>
+            </g>
+          </svg>
+        </div>
+
+        <div class="aquarium-quote">
+          <span class="quote-state" id="quote-state">写代码中</span>
+          <div class="quote-text">
+            <p class="quote-act" id="quote-act"></p>
+            <p id="quote-line">大肥鱼正在假装很忙</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="console">
+        <div class="console-head">
+          <span class="console-title">生命体征<span class="config-badge" id="config-badge" hidden>自定义参数</span></span>
+          <span class="console-shift" id="console-shift">第 1 班</span>
+        </div>
+
+        <div class="meter-row">
+          <div class="meter-label"><span>鱼币</span><b><span id="coins">0</span> / <span id="cap">40</span></b></div>
+          <div class="meter" role="progressbar" aria-label="鱼币进度" aria-valuemin="0" aria-valuemax="40" aria-valuenow="0" id="coins-meter"><span id="coins-bar"></span></div>
+        </div>
+
+        <div class="console-actions">
+          <button class="mini-btn" id="btn-feed" type="button">投喂 +8</button>
+          <button class="mini-btn" id="btn-boss" type="button">召唤龙虾娘</button>
+          <button class="mini-btn" id="btn-angry" type="button">连戳 5 次</button>
+        </div>
+
+        <form class="danmaku-form" id="danmaku-form">
+          <label class="sr-only" for="danmaku-input">对她说点什么</label>
+          <input id="danmaku-input" type="text" maxlength="28" placeholder="对她说点什么，比如：这个 bug 又出现了" autocomplete="off">
+          <button class="mini-btn mini-btn-send" type="submit">发弹幕</button>
+        </form>
+
+        <div class="quick-lines" aria-label="快捷弹幕">
+          <button type="button" data-line="这个 bug 又出现了">bug</button>
+          <button type="button" data-line="老板来了，快装忙">老板</button>
+          <button type="button" data-line="今天又摸鱼了">摸鱼</button>
+          <button type="button" data-line="大肥鱼好可爱">夸夸</button>
+        </div>
+
+        <p class="console-note">遥控的是左下角的真身 · <button class="text-btn" id="btn-reset" type="button">重置位置与数据</button></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="day">
+    <div class="section-head reveal">
+      <p class="kicker">01 / HER DAY</p>
+      <h2>她不是随机换台词的 NPC，<br>是一个有点小脾气的室友。</h2>
+      <p class="section-lede">她的行为由一个 1 Hz 的有限状态机推进。每一个动作都有触发条件，也都有代价；每一句台词，都对应一个能解释的状态。</p>
+    </div>
+
+    <div class="timeline">
+      <article class="tcard reveal" data-state="work">
+        <div class="tcard-top"><span class="tnum">01</span><span class="tstate">work</span></div>
+        <h3>写代码中</h3>
+        <p>进度条一格格往前推，推满就换下一段队列里的任务。大部分时间，她都在干这个。</p>
+        <div class="tmeta">常驻 · 每秒 tick</div>
+      </article>
+      <article class="tcard reveal" data-state="slack">
+        <div class="tcard-top"><span class="tnum">02</span><span class="tstate">slack</span></div>
+        <h3>摸鱼中</h3>
+        <p>每 20 秒摸 4 秒。眼睛眯起来，头顶飘出 z z，旁边游出一条小鱼，台词变成「屏幕亮着就算在工作」。</p>
+        <div class="tmeta">每 20s · 持续 4s</div>
+      </article>
+      <article class="tcard reveal" data-state="boss">
+        <div class="tcard-top"><span class="tnum">03</span><span class="tstate">boss</span></div>
+        <h3>龙虾娘查岗</h3>
+        <p>摸鱼时每秒 70% 概率被查岗，窗口只有 3 秒。点一下有 15% 概率溜掉，否则扣 6 个鱼币。</p>
+        <div class="tmeta">p = 0.7 · 3s 窗口</div>
+      </article>
+      <article class="tcard reveal" data-state="angry">
+        <div class="tcard-top"><span class="tnum">04</span><span class="tstate">angry</span></div>
+        <h3>生气了</h3>
+        <p>4 秒内连戳 5 次，她就不给鱼币了。停手 10 秒，她会自己消气，还要嘴硬一句「算你识相」。</p>
+        <div class="tmeta">5 次 / 4s · 静默 10s</div>
+      </article>
+      <article class="tcard reveal" data-state="sleep">
+        <div class="tcard-top"><span class="tnum">05</span><span class="tstate">sleep</span></div>
+        <h3>打瞌睡</h3>
+        <p>凌晨 2 点到 5 点，她直接睡着，冻结全部收益逻辑。戳她只回一句「别吵，睡着了」。</p>
+        <div class="tmeta">02:00–05:00 · 本地时间</div>
+      </article>
+    </div>
+
+    <aside class="insight reveal">
+      <div class="insight-mark" aria-hidden="true">+6</div>
+      <div>
+        <h3>惩罚即成长</h3>
+        <p>被抓到扣 6 个鱼币，但攒钱上限同时涨 6。你越被抓，罐子越大，越能装。惩罚不再是「别犯错」，而是「犯错也在往前」。</p>
+      </div>
+    </aside>
+
+    <aside class="insight reveal">
+      <div class="insight-mark" aria-hidden="true">15s</div>
+      <div>
+        <h3>气泡会锁话</h3>
+        <p>气泡从卡片里搬出来，成了贴在她头顶的贴纸，说话和动作分两行。你一发弹幕，气泡就归这段对话 15 秒：期间摸鱼、查岗、日常台词全部排队，不许插嘴。你主动投喂、召唤龙虾娘、连戳她，才允许打断。</p>
+      </div>
+    </aside>
+  </section>
+
+  <div class="dark-band" id="fsm">
+    <section class="section">
+      <div class="section-head reveal">
+        <p class="kicker">02 / STATE MACHINE</p>
+        <h2>五个状态，<br>一套可解释的「情绪」。</h2>
+        <p class="section-lede">状态与渲染分离：<code>step()</code> 只推进状态机，<code>render()</code> 只把状态投影到 <code>data-*</code> 属性。新增一种情绪，不用改渲染逻辑。</p>
+      </div>
+
+      <div class="fsm-grid">
+        <div class="fsm-diagram reveal">
+          <div class="fsm-live"><span class="pulse" aria-hidden="true"></span> 当前状态：<b id="fsm-current">写代码中</b></div>
+          <svg viewBox="0 0 560 400" role="img" aria-labelledby="fsm-title fsm-desc">
+            <title id="fsm-title">大肥鱼的状态机</title>
+            <desc id="fsm-desc">写代码、摸鱼、被查岗、生气、打瞌睡五个状态及它们之间的转移关系。实线表示时间驱动，虚线表示交互驱动。</desc>
+            <defs>
+              <marker id="fsm-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M0 0L10 5L0 10z" class="fsm-arrow"/>
+              </marker>
+            </defs>
+
+            <path class="fsm-edge" d="M245 96 C228 122 190 143 158 157" marker-end="url(#fsm-arrow)"/>
+            <text class="fsm-edge-label" x="180" y="132">每 20s</text>
+
+            <path class="fsm-edge fsm-edge--dashed" d="M118 160 C92 132 120 102 200 94" marker-end="url(#fsm-arrow)"/>
+            <text class="fsm-edge-label" x="96" y="132">4s 后</text>
+
+            <path class="fsm-edge" d="M180 188 L376 188" marker-end="url(#fsm-arrow)"/>
+            <text class="fsm-edge-label" x="246" y="179">查岗 70% / s</text>
+
+            <path class="fsm-edge" d="M432 216 C408 244 368 275 334 299" marker-end="url(#fsm-arrow)"/>
+            <text class="fsm-edge-label" x="388" y="262">3s 未处理</text>
+
+            <path class="fsm-edge fsm-edge--dashed" d="M452 160 C440 130 392 101 352 86" marker-end="url(#fsm-arrow)"/>
+            <text class="fsm-edge-label" x="424" y="122">点一下 · 15%</text>
+
+            <path class="fsm-edge" d="M280 300 L280 98" marker-end="url(#fsm-arrow)"/>
+            <text class="fsm-edge-label" x="291" y="204">静默 10s</text>
+
+            <path class="fsm-edge fsm-edge--dashed" d="M350 68 L374 68" marker-end="url(#fsm-arrow)"/>
+            <text class="fsm-edge-label" x="352" y="58" style="font-size:8.5px">02–05</text>
+
+            <g class="fsm-node" data-node="work">
+              <rect x="210" y="40" width="140" height="56" rx="28"/>
+              <text x="280" y="68">写代码</text>
+            </g>
+            <g class="fsm-node" data-node="slack">
+              <rect x="40" y="160" width="140" height="56" rx="28"/>
+              <text x="110" y="188">摸鱼</text>
+            </g>
+            <g class="fsm-node" data-node="boss">
+              <rect x="380" y="160" width="140" height="56" rx="28"/>
+              <text x="450" y="188">被查岗</text>
+            </g>
+            <g class="fsm-node" data-node="angry">
+              <rect x="210" y="300" width="140" height="56" rx="28"/>
+              <text x="280" y="328">生气</text>
+            </g>
+            <g class="fsm-node" data-node="sleep">
+              <rect x="380" y="40" width="140" height="56" rx="28"/>
+              <text x="450" y="68">打瞌睡</text>
+            </g>
+          </svg>
+          <p class="fsm-legend"><span class="legend-line"></span> 时间驱动 <span class="legend-line legend-line--dashed"></span> 交互驱动</p>
+        </div>
+
+        <div class="fsm-table reveal">
+          <table>
+            <caption class="sr-only">状态转移表</caption>
+            <thead><tr><th>当前</th><th>事件</th><th>条件</th><th>下一状态</th></tr></thead>
+            <tbody>
+              <tr><td>work</td><td>tick</td><td>t mod 20 = 0</td><td>slack</td></tr>
+              <tr><td>work</td><td>tick</td><td>02:00–05:00</td><td>sleep</td></tr>
+              <tr><td>work</td><td>tap</td><td>4s 内 ≥ 5 次</td><td>angry</td></tr>
+              <tr><td>slack</td><td>tick</td><td>p &lt; 0.7</td><td>boss</td></tr>
+              <tr><td>slack</td><td>tick</td><td>4s 结束</td><td>work</td></tr>
+              <tr><td>boss</td><td>tick</td><td>3s 窗口耗尽</td><td>angry <span class="neg">−6 / +6</span></td></tr>
+              <tr><td>boss</td><td>tap</td><td>q &lt; 0.15</td><td>work <span class="pos">逃脱</span></td></tr>
+              <tr><td>angry</td><td>timeout</td><td>静默 ≥ 10s</td><td>work</td></tr>
+              <tr><td>work</td><td>full</td><td>coins ≥ cap</td><td>work <span class="pos">班次 +1</span></td></tr>
+            </tbody>
+          </table>
+          <p class="fsm-note"><code>M = (S, Σ, δ, s₀, F)</code> · S = {work, slack, boss, angry, sleep}</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <section class="section" id="weight">
+    <div class="section-head reveal">
+      <p class="kicker">03 / WEIGHT</p>
+      <h2>15 KB，<br>换一个人愿意多待十秒。</h2>
+      <p class="section-lede">她的房子很小：一台 2 核 2G、3 Mbps 的云服务器。为了一个角落里的装饰把整站拖慢一个数量级，不划算。所以这里是手绘 SVG + CSS 动画，不是 Live2D。</p>
+    </div>
+
+    <div class="weight-grid">
+      <div class="weight-number reveal">
+        <div><span class="big">14.8</span><span class="unit">KB</span></div>
+        <p>gzip 后的全部体积。比一张普通的 JPEG 配图还小，比主流 Live2D 方案低约两个数量级。</p>
+        <p class="weight-source">参赛版按 gzip level 9 实测；原版线上数据见 <a href="https://github.com/JINRONG121312/whale-in-my-web/blob/main/docs/report.md" target="_blank" rel="noopener">docs/report.md</a></p>
+      </div>
+
+      <div class="weight-chart reveal">
+        <div class="size-row"><span class="size-name">挂件 JS（含鱼形）</span><div class="size-bar"><span style="--w:69%"></span></div><span class="size-num">10.2 KB</span></div>
+        <div class="size-row"><span class="size-name">挂件 CSS</span><div class="size-bar"><span style="--w:25%"></span></div><span class="size-num">3.7 KB</span></div>
+        <div class="size-row"><span class="size-name">龙虾立绘</span><div class="size-bar"><span style="--w:5%"></span></div><span class="size-num">0.8 KB</span></div>
+        <div class="size-row size-row--total"><span class="size-name">合计</span><div class="size-bar"><span style="--w:100%"></span></div><span class="size-num">14.8 KB</span></div>
+        <div class="size-row size-row--compare"><span class="size-name">Live2D</span><div class="size-bar size-bar--compare"><span style="--w:100%"></span></div><span class="size-num">1–3 MB</span></div>
+        <p class="chart-note">同一表现力下，体积降低约 69×–207×。动画只作用于 <code>transform</code> 与 <code>opacity</code>，不触发重排与重绘。</p>
+      </div>
+    </div>
+
+    <div class="perf-grid">
+      <div class="perf-card reveal"><b>&lt; 40 ms</b><span>3 Mbps 下首屏增量</span></div>
+      <div class="perf-card reveal"><b>&lt; 0.5 ms</b><span>单帧动画耗时</span></div>
+      <div class="perf-card reveal"><b>≈ 0</b><span>空闲 CPU 占用</span></div>
+    </div>
+
+    <div class="quote-band reveal">
+      <p>做加法谁都会，难的是知道自己不该加什么。</p>
+      <span>—— 项目复盘</span>
+    </div>
+  </section>
+
+  <div class="tint-band" id="customize">
+    <section class="section">
+      <div class="section-head reveal">
+        <p class="kicker">04 / MAKE HER YOURS</p>
+        <h2>她有自己的脾气，<br>也可以有你的节奏。</h2>
+        <p class="section-lede">四个参数，决定她多久摸一次鱼、被查岗的概率、被抓罚多少，以及惩罚后罐子长多大。调完点「应用」，左下角的她会立刻换一套作息。</p>
+      </div>
+
+      <div class="custom-grid">
+        <form class="customizer reveal" id="customizer">
+          <div class="slider-row">
+            <label for="opt-slack">摸鱼间隔 <output id="out-slack" for="opt-slack">20s</output></label>
+            <input id="opt-slack" type="range" min="10" max="60" step="1" value="20">
+            <p>每多少秒摸一次鱼。原版 20 秒，最低 10 秒。</p>
+          </div>
+          <div class="slider-row">
+            <label for="opt-boss">查岗概率 <output id="out-boss" for="opt-boss">70%</output></label>
+            <input id="opt-boss" type="range" min="20" max="100" step="5" value="70">
+            <p>摸鱼时每秒被龙虾娘盯上的概率。</p>
+          </div>
+          <div class="slider-row">
+            <label for="opt-penalty">被抓罚款 <output id="out-penalty" for="opt-penalty">6 鱼币</output></label>
+            <input id="opt-penalty" type="range" min="2" max="12" step="1" value="6">
+            <p>被查岗扣多少鱼币。扣完不会变成负数。</p>
+          </div>
+          <div class="slider-row">
+            <label for="opt-cap">上限增长 <output id="out-cap" for="opt-cap">+6</output></label>
+            <input id="opt-cap" type="range" min="0" max="12" step="1" value="6">
+            <p>每被抓一次，攒钱上限抬高多少。设为 0 就是纯惩罚。</p>
+          </div>
+
+          <div class="custom-actions">
+            <button class="btn btn-primary" type="submit">应用配置，让她重新上班</button>
+            <button class="btn btn-ghost" type="button" id="copy-config">复制配置代码</button>
+            <button class="btn btn-ghost" type="button" id="reset-config">恢复默认</button>
+          </div>
+          <p class="form-note" id="custom-status">当前使用原版参数。</p>
+        </form>
+
+        <div class="code-card reveal">
+          <div class="code-head"><span>window.WG_CONFIG</span><button class="copy-btn" type="button" data-copy="config-code">复制</button></div>
+          <pre><code id="config-code"></code></pre>
+          <p class="code-note">参赛演示版在脚本加载前读取 <code>WG_CONFIG</code>。不写这一段，她使用原版默认值。</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <section class="section" id="embed">
+    <div class="section-head reveal">
+      <p class="kicker">05 / EMBED</p>
+      <h2>两个文件，<br>把她放进你的页面。</h2>
+      <p class="section-lede">不绑定任何框架。Hexo、Butterfly、Vue、纯 HTML 都行；代码里没有一处写死站点结构。</p>
+    </div>
+
+    <div class="embed-grid">
+      <div class="code-card reveal">
+        <div class="code-head"><span>HTML · 完整接入</span><button class="copy-btn" type="button" data-copy="embed-html">复制</button></div>
+        <pre><code id="embed-html"></code></pre>
+      </div>
+      <div class="code-card reveal">
+        <div class="code-head"><span>让她读弹幕</span><button class="copy-btn" type="button" data-copy="embed-event">复制</button></div>
+        <pre><code id="embed-event">document.dispatchEvent(new CustomEvent('wg:danmaku', {
+  detail: {
+    name: '前端小李',
+    text: '这个 bug 又出现了'
+  }
+}));</code></pre>
+      </div>
+    </div>
+
+    <div class="embed-notes">
+      <div class="note-card reveal">
+        <h3>任意静态页面</h3>
+        <p>浏览器打开就能跑，不需要构建。想先看效果，直接访问本页；挂件已经在你左下角。</p>
+      </div>
+      <div class="note-card reveal">
+        <h3>数据源解耦</h3>
+        <p>她只监听 <code>wg:danmaku</code>，不知道数据从哪来。接自己的接口、WebSocket 或静态 JSON，都不用改挂件代码。</p>
+      </div>
+      <div class="note-card reveal">
+        <h3>手机端也有的小互动</h3>
+        <p>窄屏收成头像，点开卡片可以投喂，还能点「摸鱼呢？／夸夸你／老板来了」让她接一句——用的是同一套回复规则，不发一个请求。查岗与生气在手机端自动关闭。</p>
+      </div>
+      <div class="note-card reveal">
+        <h3>原创与许可</h3>
+        <p>角色、代码、配图均为作者原创。个人博客、学习、公益免费；商业使用需授权并分成。</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="dark-band" id="qoder">
+    <section class="section">
+      <div class="section-head reveal">
+        <p class="kicker">06 / BUILT WITH QODER</p>
+        <h2>从仓库里的两个文件，<br>到一扇公开的观测窗。</h2>
+        <p class="section-lede">挂件本体是我的原创作品，此前已在 GitHub 公开；这次参赛版由 Qoder 完成梳理、增强、展示站构建与 Qoder Sites 部署。下面是这次实际走过的步骤。</p>
+      </div>
+
+      <ol class="build-log" id="build-log">
+        <li class="reveal">
+          <span class="step">01</span>
+          <div><h3>读仓库，找卖点</h3><p>Qoder 通读了 README、技术报告、复盘文和源码，把项目提炼成四个评委能一眼记住的点：15 KB、零依赖、有限状态机、事件解耦。</p></div>
+        </li>
+        <li class="reveal">
+          <span class="step">02</span>
+          <div><h3>重绘角色，定叙事</h3><p>把鲸鱼娘重绘成 Q 版大肥鱼，再把「网页左下角的大肥鱼」包装成「深海观测窗」：左边讲她是谁，右边的暗色水族箱里放她的实时生命体征和遥控器。</p></div>
+        </li>
+        <li class="reveal">
+          <span class="step">03</span>
+          <div><h3>增强挂件，而不是重写</h3><p>保留原版的状态机、文案和 SVG，增加 <code>window.WG_CONFIG</code> 参数注入与 <code>wg:boss</code> 演示事件；再把我自己博客上跑过一段时间的改动搬回来：气泡独立成贴纸、动作与台词分行、对话锁定 15 秒、打赏与「摸摸」拆开、拖拽按真实尺寸夹紧、靠右边气泡自动翻转。</p></div>
+        </li>
+        <li class="reveal">
+          <span class="step">04</span>
+          <div><h3>做交互与验收</h3><p>实现实时遥测（含动作行）、状态机高亮、弹幕飞过、参数定制、接入代码生成，以及手机端的投喂与「点词接话」；本地起服务，在 1440px 与 390px 两套视口逐项点过投喂、查岗、生气、弹幕、对话锁定、拖拽夹紧和配置应用。</p></div>
+        </li>
+        <li class="reveal">
+          <span class="step">05</span>
+          <div><h3>部署到 Qoder Sites</h3><p>用 Qoder Sites 发布为公开站点，评委打开链接就能直接体验；作品帖里附上公开地址、过程截图和技术报告。</p></div>
+        </li>
+      </ol>
+
+      <div class="shot-grid">
+        <figure class="reveal">
+          <img src="assets/shots/hero.png" alt="首页观测窗与实时遥控器" loading="lazy">
+          <figcaption>01 · 首页：左下角的真身与观测窗里的实时遥测联动</figcaption>
+        </figure>
+        <figure class="reveal">
+          <img src="assets/shots/fsm.png" alt="状态机示意图" loading="lazy">
+          <figcaption>02 · 状态机：当前状态会实时高亮</figcaption>
+        </figure>
+        <figure class="reveal">
+          <img src="assets/shots/customize.png" alt="参数定制器" loading="lazy">
+          <figcaption>03 · 参数定制：调完立即换一套作息</figcaption>
+        </figure>
+        <figure class="reveal">
+          <img src="assets/shots/mobile.png" alt="移动端布局" loading="lazy">
+          <figcaption>04 · 移动端：收成圆形头像，点开卡片能投喂、能点词接话</figcaption>
+        </figure>
+      </div>
+
+      <div class="diff-card reveal">
+        <div class="code-head"><span>本次新增 · 最小改动</span></div>
+        <pre><code>+ var CFG = window.WG_CONFIG || {};
++ var SLACK_EVERY = Math.round(num('slackEvery', 20, 5, 120));
++ var BOSS_CHANCE = num('bossChance', 0.7, 0, 1);
++ var PENALTY     = Math.round(num('penalty', 6, 0, 30));
++ var CAP_STEP    = Math.round(num('capStep', 6, 0, 30));
++
++  // 演示页专用：外部可召唤一次查岗
++  document.addEventListener('wg:boss', function () {
++    game.phase = 'slack';
++    game.bossActive = true;
++    game.bossLeft = 30;
++    render();
++  });</code></pre>
+      </div>
+
+      <div class="honesty reveal">
+        <h3>哪些是 Qoder 做的，哪些是我做的</h3>
+        <p><b>原作：</b>鲸鱼娘与龙虾娘的形象、SVG、状态机、文案、技术报告，在参赛前已完成并公开在 GitHub。</p>
+        <p><b>这次的角色重绘：</b>按「Q 版大肥鱼」的方向重新绘制了原创 SVG，保留耳机、笔记本与摸鱼玩法；没有搬用第三方同人素材。</p>
+        <p><b>参赛版：</b>Qoder 负责梳理代码与叙事、搭建这个展示站、增加参数注入与演示事件、实现遥测/定制/部署；我负责确定主题、审美取舍，并在浏览器里逐项验收交互。</p>
+        <p>页面里的截图来自本次本地构建与线上验收，不是概念图。</p>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="assets/fat-fish.svg" alt="" width="44" height="44">
+      <div><b>fat-fish-in-my-web</b><p>一只住在网页左下角的 Q 版大肥鱼。</p></div>
+    </div>
+    <div class="footer-links">
+      <a href="https://github.com/JINRONG121312/whale-in-my-web" target="_blank" rel="noopener">GitHub 仓库 ↗</a>
+      <a href="https://github.com/JINRONG121312/whale-in-my-web/blob/main/docs/report.md" target="_blank" rel="noopener">技术报告 ↗</a>
+      <a href="#top">回到顶部 ↑</a>
+    </div>
+    <p class="footer-note">原创作品 · PolyForm Noncommercial 1.0.0 · 2026 Qoder 高校创造力大赛 LifeHack 赛道<br>本站由 Qoder 构建并部署于 Qoder Sites。角色与代码版权归作者所有。</p>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script defer src="src/whale-girl.js"></script>
+<script defer src="app.js"></script>
+</body>
+</html>
